@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="title">Photos</h2>
+  <h3 class="title">Contributions</h3>
+
+  <div class="row gallery">
+    <div class="col-md-12">
+      {% if contributions %}
+        {% for contribution in contributions %}
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <a href="#" data-toggle="modal" data-target="#ImageModal-{{ contribution.pk }}">
+                <img src="{{ media_url }}{{ contribution.image_thumb }}">
+              </a>
+            </div>
+          </div>
+
+          <!-- Full Image Modals -->
+          <div class="modal fade" id="ImageModal-{{ contribution.pk }}" tabindex="-1" role="dialog" aria-labelledby="ImageModal-{{ contribution.pk }}" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <img src="{{ media_url }}{{ contribution.image }}">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        No contributions for this Activity
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

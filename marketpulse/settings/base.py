@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_nose',
     'import_export',
     'django_countries',
+    'imagekit',
 
     # Project specific apps
     '%s.auth' % PROJECT_MODULE,
